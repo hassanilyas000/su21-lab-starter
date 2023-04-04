@@ -1,5 +1,7 @@
 #ifndef LL_CYCLE_H
 #define LL_CYCLE_H
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef struct node {
     int value;

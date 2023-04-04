@@ -9,6 +9,7 @@ int main() {
     const char *test1_last = "Garcia";
     const char *test1_pwd = "qrtv?,mp!ltrA0b13rab4ham";
     bool test1 = check_password(test1_first, test1_last, test1_pwd);
+   
     assert(test1);
 
     printf("Congrats! The first test case is now passing. You should remove the assert statements that you added "
