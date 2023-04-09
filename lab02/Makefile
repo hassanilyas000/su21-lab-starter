@@ -1,16 +1,44 @@
 CC=gcc
-CFLAGS=-Wall -std=c99
+CFLAGS=-Wall -g -std=c99
 
-all: linked_list
+all: result
+link2: link_list
+outvector: outvector
 
-linked_list: linked_list.o test_linked_list.o
+link_list: linked_list.o test_linked_list.o
 	$(CC) -o linked_list linked_list.o test_linked_list.o
 
 linked_list.o: linked_list.c linked_list.h
 	$(CC) $(CFLAGS) -c linked_list.c
-
+	
 test_linked_list.o: test_linked_list.c linked_list.h
 	$(CC) $(CFLAGS) -c test_linked_list.c
+clean2:
+	rm linked_list linked_list.o test_linked_list.o
+
+
+
+result: bit_ops.o test_bit_ops.o vector.o test_vector.o
+	$(CC) -o result bit_ops.o test_bit_ops.o
+	$(CC) -o vector vector.o test_vector.o 
+
+bit_ops: bit_ops.o test_bit_ops.o
+	$(CC) -o bit_ops bit_ops.o test_bit_ops.o
+	
+bit_ops.o: bit_ops.c bit_ops.h
+	$(CC) $(CFLAGS) -c bit_ops.c
+test_bit_ops.o: test_bit_ops.c bit_ops.h
+	$(CC) $(CFLAGS) -c test_bit_ops.c
+	
+outvector: vector.o test_vector.o
+	$(CC) $(CFLAGS) -o vector vector.o test_vector.o
+vector.o: vector.c vector.h
+	$(CC) $(CFLAGS) -c vector.c
+test_vector.o: test_vector.c vector.h
+	$(CC) $(CFLAGS) -c test_vector.c
+clean3:
+	rm vector vector.o test_vector.o	
+	
 
 clean:
-	rm linked_list linked_list.o test_linked_list.o
+	rm result vector bit_ops.o test_bit_ops.o vector.o test_vector.o
