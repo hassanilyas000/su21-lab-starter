@@ -39,7 +39,6 @@ loop:
     ecall
      ######
     addi t0, t0, 4         # increment array pointer
-    add sp,sp,t0
    ######
    addi s0,s0,1        #i++
    j loop
